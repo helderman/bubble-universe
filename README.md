@@ -4,7 +4,7 @@ Epic animation: easy to implement, hard to understand!
 ## TL;DR Live demo
 Just click the link:
 
-https://helderman.github.io/bubble-universe/html5/bu.html
+[https://helderman.github.io/bubble-universe/html5/bu.html](https://helderman.github.io/bubble-universe/html5/bu.html)
 
 I wrote the JavaScript code, but the math behind it came from people smarter than me.
 What follows is a brief history of the animation through various programming languages.
@@ -40,19 +40,17 @@ about the underlying math, and posted about it
 in 2025.
 
 ## Scratch
-RokCoder made this nice implementation in 2026. Instantly playable in the browser.   
-https://scratch.mit.edu/projects/1314640592/
-
-Or using a faster player:   
-https://turbowarp.org/1314640592
+RokCoder made [this nice implementation](https://scratch.mit.edu/projects/1314640592/) in 2026.
+Instantly playable in the browser.   
+Looks even better in [TurboWarp](https://turbowarp.org/1314640592).
 
 ## HTML
 For online use, I made an implementation in
-[HTML5 using canvas](https://github.com/helderman/bubble-universe/html5/);
+[HTML5 using canvas](https://github.com/helderman/bubble-universe/tree/main/html5/);
 instantly playable in every modern web browser.
 See the link at the top of this document!
 
 ## C
 For desktop use, I made an implementation in
-[C using SDL2](https://github.com/helderman/bubble-universe/c/);
+[C using SDL2](https://github.com/helderman/bubble-universe/tree/main/c/);
 simple, portable and efficient.
