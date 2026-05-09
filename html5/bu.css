@@ -1,0 +1,9 @@
+body {
+    background: black;
+
+    /* Canvas centered on page - https://stackoverflow.com/a/72837275/2485966 */
+	margin: 0;
+    height: 100vh;
+    display: grid;             
+    place-items: center;
+}
