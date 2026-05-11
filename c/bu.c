@@ -21,7 +21,7 @@ static void DrawFrame(SDL_Window *window, SDL_Renderer *renderer, float time)
         for (int j = 0; j < 256; j++)
         {
             float a = x + i;
-            float b = y + i * 0.031 + time;
+            float b = y + i * 0.031f + time;
             x = SDL_cosf(a) + SDL_cosf(b);
             y = SDL_sinf(a) + SDL_sinf(b);
             SDL_SetRenderDrawColor(renderer, i, j, 99, 255);
@@ -77,7 +77,7 @@ int main()
                 exitCode = 0;           // initialization was successful
                 while (EventLoop())
                 {
-                    DrawFrame(window, renderer, SDL_GetTicks() * 0.0002);
+                    DrawFrame(window, renderer, SDL_GetTicks() * 0.0002f);
                 }
                 SDL_DestroyRenderer(renderer);
             }
