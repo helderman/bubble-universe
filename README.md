@@ -54,3 +54,7 @@ See the link at the top of this document!
 For desktop use, I made an implementation in
 [C using SDL2](https://github.com/helderman/bubble-universe/tree/main/c/);
 simple, portable and efficient.
+
+## Direct2D
+[C++ using Direct2D](https://github.com/helderman/bubble-universe/tree/main/direct2d/);
+sample code from Microsoft helped me make this implementation for Windows desktop.

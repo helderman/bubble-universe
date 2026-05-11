@@ -16,9 +16,9 @@ static void DrawFrame(SDL_Window *window, SDL_Renderer *renderer, float time)
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);     // black
     SDL_RenderClear(renderer);
 
-    for (int i = 0; i < 255; i++)
+    for (int i = 0; i < 256; i++)
     {
-        for (int j = 0; j < 255; j++)
+        for (int j = 0; j < 256; j++)
         {
             float a = x + i;
             float b = y + i * 0.031 + time;
