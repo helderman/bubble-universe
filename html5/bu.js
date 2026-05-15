@@ -1,4 +1,4 @@
-// bu.js - Ruud Helderman, 2026-05-09 - MIT License
+// bu.js - Ruud Helderman, May 2026 - MIT License
 // Based on "Bubble Universe", written in Processing by yuruyurau
 // https://x.com/yuruyurau/status/1226846058728177665
 
@@ -12,7 +12,7 @@ const ctx = canvas.getContext('2d');
 const galaxy = {
     spiral: function(i, t) {
         const a = this.x + i;
-        const b = this.y + i * 0.031 + t;
+        const b = this.y + i * 0.031 - t;
         this.x = Math.cos(a) + Math.cos(b);
         this.y = Math.sin(a) + Math.sin(b);
     }
@@ -25,28 +25,28 @@ function step(time) {
     const image = ctx.createImageData(w, h);
     const pixels = image.data;
 
-    const blend = function(i, v) {    // there's many fun ways you can do this
-        const n = 1 - v/255;
-        pixels[i] = 255 - (255 - pixels[i]) * n * n;
+    const blend = function(i, v) {            // there's 1M ways to blend, but
+        pixels[i] = Math.max(pixels[i], v);   // there's only one way to rock
     };
-    const paint = function(i, red, green, blue, a) {
-        blend(i, a * red);
-        blend(i+1, a * green);
-        blend(i+2, a * blue);
-        pixels[i+3] = 255;     // alpha: fully opaque
+    const paint = function(x, y, xi, yi, w, red, green, blue) {
+        let i = 4 * (xi + yi * w);
+        blend(i++, red);
+        blend(i++, green);
+        blend(i++, blue);
+        blend(i, 255 * (1 - Math.abs(x - xi - 0.5)) * (1 - Math.abs(y - yi - 0.5)));
     };
-    galaxy.x = galaxy.y = 0;
     for (let i = 0; i < 256; i++) {
+        galaxy.x = galaxy.y = 0;
         for (let j = 0; j < 256; j++) {
             galaxy.spiral(i, t);
             // paint a dot with anti-aliasing
-            const x = (galaxy.x * 0.24 + 0.5) * w, xi = Math.round(x);
-            const y = (galaxy.y * 0.24 + 0.5) * h, yi = Math.round(y);
+            const x = (0.5 - galaxy.x * 0.24) * w, xi = Math.round(x);
+            const y = (0.5 - galaxy.y * 0.24) * h, yi = Math.round(y);
             if (xi > 0 && xi < w && yi > 0 && yi < h) {
-                paint(4 * (xi   +  yi    * w), i, j, 99, (0.5 + x - xi) * (0.5 + y - yi));
-                paint(4 * (xi-1 +  yi    * w), i, j, 99, (0.5 + xi - x) * (0.5 + y - yi));
-                paint(4 * (xi   + (yi-1) * w), i, j, 99, (0.5 + x - xi) * (0.5 + yi - y));
-                paint(4 * (xi-1 + (yi-1) * w), i, j, 99, (0.5 + xi - x) * (0.5 + yi - y));
+                paint(x, y, xi  , yi  , w, i, j, 99);
+                paint(x, y, xi-1, yi  , w, i, j, 99);
+                paint(x, y, xi  , yi-1, w, i, j, 99);
+                paint(x, y, xi-1, yi-1, w, i, j, 99);
             }
         }
     }

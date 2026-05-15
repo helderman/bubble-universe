@@ -1,4 +1,4 @@
-// bu.cpp - Ruud Helderman, 2026-05-09 - MIT License
+// bu.cpp - Ruud Helderman, May 2026 - MIT License
 // Based on "Bubble Universe", written in Processing by yuruyurau
 // https://x.com/yuruyurau/status/1226846058728177665
 
@@ -188,20 +188,19 @@ HRESULT BubbleUniverse::OnRender()
         m_pRenderTarget->SetTransform(D2D1::Matrix3x2F::Identity());
         m_pRenderTarget->Clear(D2D1::ColorF(D2D1::ColorF::Black));
 
-        FLOAT x = 0;
-        FLOAT y = 0;
         for (int i = 0; i < 128; i++)
         {
+            FLOAT x = 0, y = 0;
             for (int j = 0; j < 128; j++)
             {
                 FLOAT a = x + i;
-                FLOAT b = y + i * 0.031f + time;
+                FLOAT b = y + i * 0.031f - time;
                 x = cosf(a) + cosf(b);
                 y = sinf(a) + sinf(b);
-                m_pBrush->SetColor(D2D1::ColorF(0.0078125f * i, 0.0078125f * j, 0.5f, 1));
+                m_pBrush->SetColor(D2D1::ColorF((float)i / 128.0f, (float)j / 128.0f, 0.4f, 1));
                 m_pRenderTarget->FillEllipse(
                     D2D1::Ellipse(
-                        D2D1::Point2F(size * x + width / 2, size * y + height / 2),
+                        D2D1::Point2F(width / 2 - size * x, height / 2 - size * y),
                         size * 0.005f,
                         size * 0.005f
                     ),

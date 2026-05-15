@@ -1,6 +1,9 @@
 {
 	"folders": [
 		{
+			"path": "../c"
+		},
+		{
 			"path": "../direct2d"
 		},
 		{
