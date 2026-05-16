@@ -188,21 +188,21 @@ HRESULT BubbleUniverse::OnRender()
         m_pRenderTarget->SetTransform(D2D1::Matrix3x2F::Identity());
         m_pRenderTarget->Clear(D2D1::ColorF(D2D1::ColorF::Black));
 
-        for (int i = 0; i < 128; i++)
+        for (int i = 0; i < 256; i += 2)
         {
             FLOAT x = 0, y = 0;
-            for (int j = 0; j < 128; j++)
+            for (int j = 0; j < 256; j += 2)
             {
                 FLOAT a = x + i;
                 FLOAT b = y + i * 0.031f - time;
                 x = cosf(a) + cosf(b);
                 y = sinf(a) + sinf(b);
-                m_pBrush->SetColor(D2D1::ColorF((float)i / 128.0f, (float)j / 128.0f, 0.4f, 1));
+                m_pBrush->SetColor(D2D1::ColorF((float)i / 255.0f, (float)j / 255.0f, 0.4f, 1));
                 m_pRenderTarget->FillEllipse(
                     D2D1::Ellipse(
                         D2D1::Point2F(width / 2 - size * x, height / 2 - size * y),
-                        size * 0.005f,
-                        size * 0.005f
+                        size * 0.008f,
+                        size * 0.008f
                     ),
                     m_pBrush
                 );
@@ -301,7 +301,7 @@ LRESULT CALLBACK BubbleUniverse::WndProc(HWND hwnd, UINT message, WPARAM wParam,
     return result;
 }
 
-long long BubbleUniverse::GetTime(void)
+long long BubbleUniverse::GetTime(void)     // TODO
 {
     return std::chrono::high_resolution_clock::now().time_since_epoch().count();
 }

@@ -16,19 +16,19 @@ static float flabs(float a)    // so annoying fabs is double-only
 
 static void DrawPixel(SDL_Renderer *renderer, int red, int green, int blue, float x, float y, int xi, int yi)
 {
-    float a = (1.0f - flabs(x - (float)xi - 0.5f)) * (1.0f - flabs(y - (float)yi - 0.5f));
+    float a = (1.0f - flabs(x - (float)xi)) * (1.0f - flabs(y - (float)yi));
     SDL_SetRenderDrawColor(renderer, red, green, blue, (int)(a * 255));
     SDL_RenderDrawPoint(renderer, xi, yi);
 }
 
 static void DrawPoint(SDL_Renderer *renderer, int red, int green, int blue, float x, float y)
 {
-    int xi = (int)round(x);
-    int yi = (int)round(y);
-    DrawPixel(renderer, red, green, blue, x, y, xi  , yi);
-    DrawPixel(renderer, red, green, blue, x, y, xi-1, yi);
-    DrawPixel(renderer, red, green, blue, x, y, xi  , yi-1);
-    DrawPixel(renderer, red, green, blue, x, y, xi-1, yi-1);
+    int xi = (int)floor(x);
+    int yi = (int)floor(y);
+    DrawPixel(renderer, red, green, blue, x, y, xi  , yi  );
+    DrawPixel(renderer, red, green, blue, x, y, xi+1, yi  );
+    DrawPixel(renderer, red, green, blue, x, y, xi  , yi+1);
+    DrawPixel(renderer, red, green, blue, x, y, xi+1, yi+1);
 }
 
 static void DrawFrame(SDL_Window *window, SDL_Renderer *renderer, float time)
@@ -38,8 +38,8 @@ static void DrawFrame(SDL_Window *window, SDL_Renderer *renderer, float time)
 
     SDL_GetWindowSize(window, &width, &height);
     size = (width < height ? width : height) * 0.24f;
-    x0 = 0.5f * (float)width;
-    y0 = 0.5f * (float)height;
+    x0 = 0.5f * (float)(width - 1);
+    y0 = 0.5f * (float)(height - 1);
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);     // black
     SDL_RenderClear(renderer);

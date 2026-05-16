@@ -21,8 +21,8 @@ public partial class Form1 : Form
     {
         int w = ClientSize.Width;
         int h = ClientSize.Height;
-        double x0 = 0.5 * w - 0.5;      // accurately center the image
-        double y0 = 0.5 * h - 0.5;
+        double x0 = 0.5 * (w - 1);      // accurately center the image
+        double y0 = 0.5 * (h - 1);
         double scale = Math.Min(w, h) * 0.24;                          // zoom factor
         double time = DateTime.UtcNow.TimeOfDay.TotalSeconds * 0.01;   // animation speed
 
