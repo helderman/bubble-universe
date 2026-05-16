@@ -4,11 +4,16 @@
 			"path": "../c"
 		},
 		{
+			"path": "../csharp"
+		},
+		{
 			"path": "../direct2d"
 		},
 		{
 			"path": "../html5"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"makefile.configureOnOpen": false
+	}
 }

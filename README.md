@@ -44,13 +44,19 @@ RokCoder made [this nice implementation](https://scratch.mit.edu/projects/131464
 Instantly playable in the browser.   
 Looks even better in [TurboWarp](https://turbowarp.org/1314640592).
 
-## HTML
+## JavaScript
 For online use, I made an implementation in
 [HTML5 using canvas](https://github.com/helderman/bubble-universe/tree/main/html5/);
 instantly playable in every modern web browser.
 See the link at the top of this document!
 
-## C
+## p5.js
+Staying close to the Processing language used for the original implementation.
+Not only is this
+[instantly playable in the browser](https://editor.p5js.org/dojadragon/sketches/QJzoakkVa),
+everybody can make their own adjustments and immediately see the result.
+
+## SDL2
 For desktop use, I made an implementation in
 [C using SDL2](https://github.com/helderman/bubble-universe/tree/main/c/);
 simple, portable and efficient.
@@ -58,3 +64,7 @@ simple, portable and efficient.
 ## Direct2D
 [C++ using Direct2D](https://github.com/helderman/bubble-universe/tree/main/direct2d/);
 sample code from Microsoft helped me make this implementation for Windows desktop.
+
+## WinForms
+[C# using WinForms](https://github.com/helderman/bubble-universe/tree/main/csharp/);
+efficient, but Windows-only.
