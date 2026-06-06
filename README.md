@@ -68,3 +68,8 @@ sample code from Microsoft helped me make this implementation for Windows deskto
 ## WinForms
 [C# using WinForms](https://github.com/helderman/bubble-universe/tree/main/csharp/);
 efficient, but Windows-only.
+
+## Liberty BASIC 4
+Much too slow for real-time rendering, so I
+[implemented](https://github.com/helderman/bubble-universe/tree/main/libertybasic/);
+pre-rendering instead.
