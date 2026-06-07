@@ -71,5 +71,5 @@ efficient, but Windows-only.
 
 ## Liberty BASIC 4
 Much too slow for real-time rendering, so I
-[implemented](https://github.com/helderman/bubble-universe/tree/main/libertybasic/);
+[implemented](https://github.com/helderman/bubble-universe/tree/main/libertybasic/)
 pre-rendering instead.
