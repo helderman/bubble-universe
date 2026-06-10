@@ -73,3 +73,7 @@ efficient, but Windows-only.
 Much too slow for real-time rendering, so I
 [implemented](https://github.com/helderman/bubble-universe/tree/main/libertybasic/)
 pre-rendering instead.
+
+## GLSL
+[Fragment shader](https://helderman.github.io/bubble-universe/webgl/bu.html),
+also published on [Shadertoy](https://www.shadertoy.com/view/N3sSW8).
